@@ -9,8 +9,8 @@ public class AtbashCipher {
         String encrypted = "";
 
         for (int i = 0; i < decrypted.length(); i++) {
-            String charr = String.valueOf(decrypted.charAt(i));
-            encrypted += abc.indexOf(charr) > -1 ? zyx.charAt(abc.indexOf(charr)) : charr;
+            String chr = String.valueOf(decrypted.charAt(i));
+            encrypted += abc.indexOf(chr) > -1 ? zyx.charAt(abc.indexOf(chr)) : chr;
         }
         return encrypted;
     }
