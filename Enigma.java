@@ -44,6 +44,12 @@ public class Enigma {
             case 1:
                 System.out.println(AtbashCipher.encrypt(getUserInput()));
                 break;
+            case 3:
+                if (operation == 1)
+                    System.out.println(CaesarCipher.encrypt(getUserInput()));
+                else
+                    System.out.println(CaesarCipher.decrypt(getUserInput()));
+                break;
 
             default:
                 break;

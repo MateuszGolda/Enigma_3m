@@ -5,7 +5,7 @@ pzrekazany input*/
 public class CaesarCipher {
     public static String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    public static String Encrypting() {
+    public static String encrypt(String toEncrypt) {
         ArrayList<String> encrypted = new ArrayList<>();
         for (int i = 0; i < toEncrypt.length(); i ++) {
             String letter = toEncrypt.substring(i, i + 1);
@@ -24,9 +24,13 @@ public class CaesarCipher {
                 encrypted.add(toEncrypt.substring(i, i + 1));
             }
         }
-        return encrypted.toString();
+        StringBuilder sb = new StringBuilder();
+        for (String s : encrypted)
+            sb.append(s);
+        return sb.toString();
     }
-    public static String Decrypting() {
+
+    public static String decrypt(String toDecrypt) {
         ArrayList<String> decrypted = new ArrayList<>();
         for (int i = 0; i < toDecrypt.length(); i ++) {
             String decryptLetter = toDecrypt.substring(i, i + 1);
@@ -45,10 +49,9 @@ public class CaesarCipher {
                 decrypted.add(toDecrypt.substring(i, i + 1));
             }
         }
-        return decrypted.toString();
+        StringBuilder sb = new StringBuilder();
+        for (String s : decrypted)
+            sb.append(s);
+        return sb.toString();
     }
-public static void main( String[] args ){
-    CaesarCipher.encrypting();
-    CaesarCipher.decrypting();
-}
 }
