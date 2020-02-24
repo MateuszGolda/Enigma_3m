@@ -3,7 +3,14 @@
  */
 public class AtbashCipher {
 
-    public static void name() {
-        System.out.println("test");
+    public static String encrypt() {
+        String encrypted = "encrypted";
+        return encrypted;
     }
+
+    public static String decrypt() {
+        String decrypted = "decrypted";
+        return decrypted;
+    }
+
 }
