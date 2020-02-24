@@ -14,9 +14,4 @@ public class AtbashCipher {
         }
         return encrypted;
     }
-
-    public static String decrypt(String encrypted) {
-        String decrypted = encrypt(encrypted);
-        return decrypted;
-    }
 }
