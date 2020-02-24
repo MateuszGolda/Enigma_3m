@@ -45,7 +45,7 @@ public class Enigma {
     public String getUserInput() {
         System.out.println("Enter your text");
         try (Scanner thirdInput = new Scanner(System.in)) {
-            final String userInput = thirdInput.next();
+            final String userInput = thirdInput.nextLine();
             return userInput;
         }
     }
