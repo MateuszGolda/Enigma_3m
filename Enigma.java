@@ -1,5 +1,6 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 /**
  * Enigma
  */
@@ -31,9 +32,8 @@ public class Enigma {
 
         while (userChoice < min || userChoice > max) {
             try {
-                userChoice = input.nextInt();
-            }
-            catch (InputMismatchException e) {
+                userChoice = input.nextByte();
+            } catch (InputMismatchException e) {
                 System.out.println("Enter a number between " + min + " and " + max);
             }
         }
@@ -44,6 +44,12 @@ public class Enigma {
         switch (cipher) {
             case 1:
                 System.out.println(AtbashCipher.encrypt(getUserInput()));
+                break;
+            case 3:
+                if (operation == 1)
+                    System.out.println(CaesarCipher.encrypt(getUserInput()));
+                else
+                    System.out.println(CaesarCipher.decrypt(getUserInput()));
                 break;
 
             default:
