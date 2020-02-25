@@ -29,6 +29,7 @@ public class CaesarCipher {
         for (String s : encrypted)
             sb.append(s);
         return sb.toString();
+
     }
 
     public static String decrypt(String toDecrypt) {
