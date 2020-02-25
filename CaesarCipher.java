@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 
-/* to encrypt
-i to decrypt zamienic na
-pzrekazany input*/
 public class CaesarCipher {
     public static String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -29,7 +26,6 @@ public class CaesarCipher {
         for (String s : encrypted)
             sb.append(s);
         return sb.toString();
-
     }
 
     public static String decrypt(String toDecrypt) {
