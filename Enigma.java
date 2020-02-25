@@ -44,11 +44,19 @@ public class Enigma {
             case 1:
                 System.out.println(AtbashCipher.encrypt(getUserInput()));
                 break;
+            
             case 3:
                 if (operation == 1)
                     System.out.println(CaesarCipher.encrypt(getUserInput()));
                 else
                     System.out.println(CaesarCipher.decrypt(getUserInput()));
+                break;
+
+            case 4:
+                if (operation == 1)
+                    System.out.println(AffineCipher.encrypt(getUserInput(), (byte) 5, (byte) 9));
+                else
+                    System.out.println(AffineCipher.decrypt(getUserInput(), 5, 9));
                 break;
 
             default:
