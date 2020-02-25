@@ -24,7 +24,7 @@ public class CaesarCipher {
                 encrypted.add(toEncrypt.substring(i, i + 1));
             }
         }
-        return encrypted.toString();
+        return encrypted;
     }
     public static String Decrypting() {
         ArrayList<String> decrypted = new ArrayList<>();
