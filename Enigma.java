@@ -58,7 +58,11 @@ public class Enigma {
             case "1":
                 System.out.println(AtbashCipher.encrypt(getUserInput()));
                 break;
-            
+
+            case "2":
+                System.out.println(ROT13Cipher.encrypt(getUserInput()));
+                break;
+
             case "3":
                 if (args[0].equals("-e"))
                     System.out.println(CaesarCipher.encrypt(getUserInput()));
@@ -81,7 +85,6 @@ public class Enigma {
     }
 
     public static String getUserInput() {
-        System.out.println("Enter your text");
         try (Scanner input = new Scanner(System.in)) {
             String userInput = "";
             try {
@@ -90,10 +93,10 @@ public class Enigma {
                     userInput += input.nextLine() + "\n";
                 }
                 else
+                    System.out.println("Enter your text");
                     userInput = input.nextLine();
-                
             } catch (Exception e) {
-                e.printStackTrace();
+                ;
             }
             return userInput;
         }
