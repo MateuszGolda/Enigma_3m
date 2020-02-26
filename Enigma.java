@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -9,12 +8,33 @@ public class Enigma {
              "Affine Cipher", "Rail-fence Cipher", "Baconian Cipher" };
 
     public static void main(String[] args) {
+        if (args.length != 0)
+        handleCLArguments(args);
+        else {
         printCiphers();
-        byte chosenCipher = getChoiceBetween(
-            "Choose your Cipher: ", (byte) 1, (byte) 6);
-        byte chosenOperation = getChoiceBetween(
-            "Choose 1 to encrypt, 2 to decrypt: ", (byte) 1, (byte) 2);
+        String chosenCipher = getChoice("Choose your Cipher: ");
+        String chosenOperation = getChoice("Enter -e to encrypt, -d to decrypt: ");
         runCipher(chosenCipher, chosenOperation);
+        }
+    }
+
+    public static void handleCLArguments(String[] args) {
+        switch (args[0]) {
+            case "-l":
+                printCiphers();
+                break;
+
+            case "-e":
+                
+                break;
+
+            case "-d":
+                
+                break;
+
+            default:
+                break;
+        }
     }
 
     public static void printCiphers() {
@@ -24,36 +44,28 @@ public class Enigma {
         System.out.println();
     }
 
-    public static byte getChoiceBetween(String message, byte min, byte max) {
+    public static String getChoice(String message) {
         System.out.print(message);
         Scanner input = new Scanner(System.in);
-        byte userChoice = -1;
-
-        while (userChoice < min || userChoice > max) {
-            try {
-                userChoice = input.nextByte();
-            } catch (InputMismatchException e) {
-                System.out.println("Enter a number between " + min + " and " + max);
-            }
-        }
+        String userChoice = input.nextLine();
         return userChoice;
     }
 
-    public static void runCipher(byte cipher, byte operation) {
+    public static void runCipher(String cipher, String operation) {
         switch (cipher) {
-            case 1:
+            case "1":
                 System.out.println(AtbashCipher.encrypt(getUserInput()));
                 break;
             
-            case 3:
-                if (operation == 1)
+            case "3":
+                if (operation.equals("-e"))
                     System.out.println(CaesarCipher.encrypt(getUserInput()));
                 else
                     System.out.println(CaesarCipher.decrypt(getUserInput()));
                 break;
 
-            case 4:
-                if (operation == 1)
+            case "4":
+                if (operation.equals("-e"))
                     System.out.println(AffineCipher.encrypt(getUserInput(), (byte) 5, (byte) 9));
                 else
                     System.out.println(AffineCipher.decrypt(getUserInput(), 5, 9));
@@ -67,7 +79,7 @@ public class Enigma {
     public static String getUserInput() {
         System.out.println("Enter your text");
         try (Scanner thirdInput = new Scanner(System.in)) {
-            final String userInput = thirdInput.nextLine();
+            String userInput = thirdInput.nextLine();
             return userInput;
         }
     }
