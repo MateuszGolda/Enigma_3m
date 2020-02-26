@@ -82,8 +82,19 @@ public class Enigma {
 
     public static String getUserInput() {
         System.out.println("Enter your text");
-        try (Scanner thirdInput = new Scanner(System.in)) {
-            String userInput = thirdInput.nextLine();
+        try (Scanner input = new Scanner(System.in)) {
+            String userInput = "";
+            try {
+                if (System.in.available() > 0) {
+                    while (input.hasNextLine())
+                    userInput += input.nextLine() + "\n";
+                }
+                else
+                    userInput = input.nextLine();
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return userInput;
         }
     }
