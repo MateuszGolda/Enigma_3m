@@ -17,7 +17,7 @@ public class AffineCipher {
         return encrypted;
     }
 
-    public static String decrypt(String TO_ENCRYPT, int a, int b) {
+    public static String decrypt(String TO_ENCRYPT, byte a, byte b) {
         int aInv = 0;
 
         for (int i = 0; i < ABC.length(); i++) {

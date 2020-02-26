@@ -9,31 +9,33 @@ public class Enigma {
 
     public static void main(String[] args) {
         if (args.length != 0)
-        handleCLArguments(args);
+            handleCLArguments(args);
         else {
-        printCiphers();
-        String chosenCipher = getChoice("Choose your Cipher: ");
-        String chosenOperation = getChoice("Enter -e to encrypt, -d to decrypt: ");
-        runCipher(chosenCipher, chosenOperation);
+            printCiphers();
+            String chosenCipher = getChoice("Choose your Cipher: ");
+            String chosenOperation = getChoice("Enter -e to encrypt, -d to decrypt: ");
+            if (chosenCipher.equals("4")) {
+                String keyA = getChoice("Enter first key: ");
+                String keyB = getChoice("Enter second key: ");
+                String[] choices = {chosenOperation, chosenCipher, keyA, keyB};
+                runCipher(choices);
+            }
+            else {
+            String[] choices = {chosenOperation, chosenCipher};
+            runCipher(choices);
+            }
         }
     }
 
     public static void handleCLArguments(String[] args) {
-        switch (args[0]) {
-            case "-l":
-                printCiphers();
-                break;
-
-            case "-e":
-                
-                break;
-
-            case "-d":
-                
-                break;
-
-            default:
-                break;
+        if (args[0].equalsIgnoreCase("-l"))
+            printCiphers();
+        else {
+            try {
+                runCipher(args);
+            } catch (Exception e) {
+                System.out.println("Invalid arguments");
+            }
         }
     }
 
@@ -51,24 +53,26 @@ public class Enigma {
         return userChoice;
     }
 
-    public static void runCipher(String cipher, String operation) {
-        switch (cipher) {
+    public static void runCipher(String[] args) {
+        switch (args[1]) {
             case "1":
                 System.out.println(AtbashCipher.encrypt(getUserInput()));
                 break;
             
             case "3":
-                if (operation.equals("-e"))
+                if (args[0].equals("-e"))
                     System.out.println(CaesarCipher.encrypt(getUserInput()));
                 else
                     System.out.println(CaesarCipher.decrypt(getUserInput()));
                 break;
 
             case "4":
-                if (operation.equals("-e"))
-                    System.out.println(AffineCipher.encrypt(getUserInput(), (byte) 5, (byte) 9));
+                byte keyA = Byte.parseByte(args[2]);
+                byte keyB = Byte.parseByte(args[3]);
+                if (args[0].equals("-e"))
+                    System.out.println(AffineCipher.encrypt(getUserInput(), keyA, keyB));
                 else
-                    System.out.println(AffineCipher.decrypt(getUserInput(), 5, 9));
+                    System.out.println(AffineCipher.decrypt(getUserInput(), keyA, keyB));
                 break;
 
             default:
