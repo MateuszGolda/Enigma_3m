@@ -79,6 +79,13 @@ public class Enigma {
                     System.out.println(AffineCipher.decrypt(getUserInput(), keyA, keyB));
                 break;
 
+            case "5":
+                if (args[0].equals("-e"))
+                    System.out.println(RailFenceCipher.encrypt(getUserInput()));
+                else
+                    System.out.println(RailFenceCipher.decrypt(getUserInput()));
+                break;
+
             default:
                 break;
         }
