@@ -4,11 +4,6 @@
 public class BaconianCipher {
     public static final String ABC = "abcdefghiklmnopqrstuwxyz";
     public static final String ABCJV = "abcdefghjklmnopqrstvwxyz";
-    public static void main(String[] args) {
-        System.out.println(encrypt("strike now"));
-        String toDecrypt = "aaabbaababaaaaabaaaabaabaabaaabbaaabbabbabaa";
-        System.out.println(decrypt(toDecrypt)); 
-    }
 
     public static String encrypt(String toEncrypt) {
         String encrypted = "";

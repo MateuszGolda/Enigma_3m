@@ -30,6 +30,8 @@ public class Enigma {
     public static void handleCLArguments(String[] args) {
         if (args[0].equalsIgnoreCase("-l"))
             printCiphers();
+        else if (args[0].equalsIgnoreCase("-h"))
+            displayHelp();
         else {
             try {
                 runCipher(args);
@@ -37,6 +39,15 @@ public class Enigma {
                 System.out.println("Invalid arguments, or broken cipher");
             }
         }
+    }
+
+    public static void displayHelp() {
+        System.out.println("-l to list all available ciphers.");
+        System.out.println("-e and cipher number to encrypt.");
+        System.out.println("-d and cipher number to decrypt.");
+        System.out.println("< filename.txt to specify text file for input.");
+        System.out.println("If cipher requires a key, type it after cipher number.");
+        System.out.println("Affine cipher requires two keys (numbers), from which first one should be relatively prime with alphabet length (26).");
     }
 
     public static void printCiphers() {
