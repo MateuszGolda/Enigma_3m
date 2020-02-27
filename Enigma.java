@@ -34,7 +34,7 @@ public class Enigma {
             try {
                 runCipher(args);
             } catch (Exception e) {
-                System.out.println("Invalid arguments");
+                System.out.println("Invalid arguments, or broken cipher");
             }
         }
     }
@@ -78,6 +78,13 @@ public class Enigma {
                 else
                     System.out.println(AffineCipher.decrypt(getUserInput(), keyA, keyB));
                 break;
+
+            case "6":
+            if (args[0].equals("-e"))
+                System.out.println(BaconianCipher.encrypt(getUserInput()));
+            else
+                System.out.println(BaconianCipher.decrypt(getUserInput()));
+            break;
 
             default:
                 break;
