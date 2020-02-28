@@ -1,55 +1,47 @@
-import java.util.ArrayList;
-
 public class CaesarCipher {
     public static String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public static String encrypt(String toEncrypt) {
-        ArrayList<String> encrypted = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < toEncrypt.length(); i++) {
             String letter = toEncrypt.substring(i, i + 1);
             if (letter.equals("a")) {
-                encrypted.add("b");
+                sb.append("b");
             } else if (letter.equals("A")) {
-                encrypted.add("B");
+                sb.append("B");
             } else if (letter.equals("z")) {
-                encrypted.add("a");
+                sb.append("a");
             } else if (letter.equals("Z")) {
-                encrypted.add("A");
+                sb.append("A");
             } else if (alphabet.contains(letter)) {
                 int letterIndex = alphabet.indexOf(letter);
-                encrypted.add(alphabet.substring(letterIndex + 1, letterIndex + 2));
+                sb.append(alphabet.substring(letterIndex + 1, letterIndex + 2));
             } else if (!alphabet.contains(letter)) {
-                encrypted.add(toEncrypt.substring(i, i + 1));
+                sb.append(toEncrypt.substring(i, i + 1));
             }
         }
-        StringBuilder sb = new StringBuilder();
-        for (String s : encrypted)
-            sb.append(s);
         return sb.toString();
     }
 
     public static String decrypt(String toDecrypt) {
-        ArrayList<String> decrypted = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < toDecrypt.length(); i++) {
             String decryptLetter = toDecrypt.substring(i, i + 1);
             if (decryptLetter.equals("a")) {
-                decrypted.add("z");
+                sb.append("z");
             } else if (decryptLetter.equals("A")) {
-                decrypted.add("Z");
+                sb.append("Z");
             } else if (decryptLetter.equals("z")) {
-                decrypted.add("y");
+                sb.append("y");
             } else if (decryptLetter.equals("Z")) {
-                decrypted.add("Y");
+                sb.append("Y");
             } else if (alphabet.contains(decryptLetter)) {
                 int letter2Index = alphabet.indexOf(decryptLetter);
-                decrypted.add(alphabet.substring(letter2Index - 1, letter2Index));
+                sb.append(alphabet.substring(letter2Index - 1, letter2Index));
             } else if (!alphabet.contains(decryptLetter)) {
-                decrypted.add(toDecrypt.substring(i, i + 1));
+                sb.append(toDecrypt.substring(i, i + 1));
             }
         }
-        StringBuilder sb = new StringBuilder();
-        for (String s : decrypted)
-            sb.append(s);
         return sb.toString();
     }
 }
