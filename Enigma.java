@@ -4,25 +4,27 @@ import java.util.Scanner;
  * Enigma
  */
 public class Enigma {
-    public static String[] cipherNames = { "Atbash Cipher", "ROT13 Cipher", "Caesar Cipher",
-             "Affine Cipher", "Rail-fence Cipher", "Baconian Cipher" };
+    public static String[] cipherNames = { "Atbash Cipher", "ROT13 Cipher", "Caesar Cipher", "Affine Cipher",
+            "Rail-fence Cipher", "Baconian Cipher" };
 
     public static void main(String[] args) {
         if (args.length != 0)
             handleCLArguments(args);
         else {
             printCiphers();
+            System.out.println();
             String chosenCipher = getChoice("Choose your Cipher: ");
             String chosenOperation = getChoice("Enter -e to encrypt, -d to decrypt: ");
+
             if (chosenCipher.equals("4")) {
                 String keyA = getChoice("Enter first key: ");
                 String keyB = getChoice("Enter second key: ");
-                String[] choices = {chosenOperation, chosenCipher, keyA, keyB};
+                String[] choices = { chosenOperation, chosenCipher, keyA, keyB };
                 runCipher(choices);
-            }
-            else {
-            String[] choices = {chosenOperation, chosenCipher};
-            runCipher(choices);
+            } else {
+                String[] choices = { chosenOperation, chosenCipher };
+
+                runCipher(choices);
             }
         }
     }
@@ -47,14 +49,14 @@ public class Enigma {
         System.out.println("-d and cipher number to decrypt.");
         System.out.println("< filename.txt to specify text file for input.");
         System.out.println("If cipher requires a key, type it after cipher number.");
-        System.out.println("Affine cipher requires two keys (numbers), from which first one should be relatively prime with alphabet length (26).");
+        System.out.println(
+                "Affine cipher requires two keys (numbers), from which first one should be relatively prime with alphabet length (26).");
     }
 
     public static void printCiphers() {
         for (byte i = 0; i < cipherNames.length; i++) {
             System.out.println((i + 1) + " " + cipherNames[i]);
         }
-        System.out.println();
     }
 
     public static String getChoice(String message) {
@@ -115,11 +117,10 @@ public class Enigma {
             try {
                 if (System.in.available() > 0) {
                     while (input.hasNextLine())
-                    userInput += input.nextLine() + "\n";
-                }
-                else
+                        userInput += input.nextLine() + "\n";
+                } else
                     System.out.println("Enter your text");
-                    userInput = input.nextLine();
+                userInput = input.nextLine();
             } catch (Exception e) {
                 ;
             }

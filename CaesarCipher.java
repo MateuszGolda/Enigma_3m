@@ -8,9 +8,9 @@ public class CaesarCipher {
         for (int i = 0; i < toEncrypt.length(); i++) {
             String letter = toEncrypt.substring(i, i + 1);
             if (letter.equals("a")) {
-                encrypted.add("z");
+                encrypted.add("b");
             } else if (letter.equals("A")) {
-                encrypted.add("Z");
+                encrypted.add("B");
             } else if (letter.equals("z")) {
                 encrypted.add("a");
             } else if (letter.equals("Z")) {
@@ -37,9 +37,9 @@ public class CaesarCipher {
             } else if (decryptLetter.equals("A")) {
                 decrypted.add("Z");
             } else if (decryptLetter.equals("z")) {
-                decrypted.add("a");
+                decrypted.add("y");
             } else if (decryptLetter.equals("Z")) {
-                decrypted.add("A");
+                decrypted.add("Y");
             } else if (alphabet.contains(decryptLetter)) {
                 int letter2Index = alphabet.indexOf(decryptLetter);
                 decrypted.add(alphabet.substring(letter2Index - 1, letter2Index));

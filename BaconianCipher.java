@@ -9,9 +9,9 @@ public class BaconianCipher {
         String encrypted = "";
         for (int chr = 0; chr < toEncrypt.length(); chr++) {
             if (toEncrypt.charAt(chr) == 'j' || toEncrypt.charAt(chr) == 'v')
-            encrypted += chrToAOrB((byte) ABCJV.indexOf(toEncrypt.charAt(chr)));
+                encrypted += chrToAOrB((byte) ABCJV.indexOf(toEncrypt.charAt(chr)));
             else if (ABC.indexOf(toEncrypt.charAt(chr)) > -1)
-            encrypted += chrToAOrB((byte) ABC.indexOf(toEncrypt.charAt(chr)));
+                encrypted += chrToAOrB((byte) ABC.indexOf(toEncrypt.charAt(chr)));
         }
         return encrypted;
     }
@@ -26,7 +26,7 @@ public class BaconianCipher {
         String chrEncrypted = "";
         for (int chr = 0; chr < toDecrypt.length(); chr++) {
             chrEncrypted += toDecrypt.charAt(chr);
-            if (chrEncrypted.length() == 5){
+            if (chrEncrypted.length() == 5) {
                 byte chrDecrID = binToByte(chrEncrypted);
                 if (ABC.charAt(chrDecrID) > -1)
                     decrypted += ABC.charAt(chrDecrID);
